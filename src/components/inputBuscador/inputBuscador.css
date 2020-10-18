@@ -1,0 +1,13 @@
+.buscador{
+    margin-right: 1%;
+    color: white;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 10%;
+    width: 20%;
+}
+
+.buscador:hover{
+    border-color: red;
+    border-width: 2px;
+}

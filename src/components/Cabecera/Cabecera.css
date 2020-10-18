@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cabecera{
+    position: relative;   
+    background-color: black;
+    border-bottom: 1px solid;
+    border-color: black;
+    margin: auto;
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+    margin-left: 1%;
+}
+
+
+
+.icono{
+    margin-right: 2%;
+}
+
