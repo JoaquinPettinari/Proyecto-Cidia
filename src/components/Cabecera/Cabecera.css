@@ -4,11 +4,12 @@
 }
 
 .cabecera{
-    position: relative;   
+    height: 100px;  
+    width: 100%;
+    margin: auto;
     background-color: black;
     border-bottom: 1px solid;
     border-color: black;
-    margin: auto;
 }
 
 .logo{

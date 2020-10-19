@@ -1,0 +1,17 @@
+.imagenes{
+    height: 200px;
+    width: 200px;
+}
+
+.etiqueta{
+    align-items: center;
+    width: 18rem;
+    margin-top: 1%;
+    margin-left: 8%;
+    float: left;
+}
+
+.titulo{
+    margin-left: 8%;
+    margin-top: 5%;
+}

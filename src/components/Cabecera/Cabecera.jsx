@@ -12,12 +12,12 @@ function Cabecera(){
 
     return (
       <div>
-        <header className="cabecera">
+        <div className="cabecera">
             <img src={logo} className='logo'/>
             <BotonesCabecera />
             <InputBuscador />
             
-        </header>
+        </div>
 
       </div>
     );       

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './BotonesCabecera.css'
+import PeliculasFavoritas from '../BusquedaDePeliculas/PeliculasFavoritas'
 
 function BotonesCabecera(){
 
@@ -18,11 +19,12 @@ function BotonesCabecera(){
     }
 
     return (
-        <div>
+        <>
             <button onClick={cerrarSesion} className='botonesMenu'>Cerrar sesión</button>
             <button onClick={misFavoritos} className='botonesMenu'>Mis favoritos</button>  
             <button onClick={home} className='botonesMenu'>Home</button>
-        </div>
+            {isHidden && <PeliculasFavoritas pelicula={"harry potter"} titulo={"Mis favoritos: "}/>}
+        </>
     );
 
 }
