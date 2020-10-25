@@ -1,12 +1,22 @@
 .imagenesCarousel{
-    margin-top: 10%;
+    margin-top: 5%;
+    border-radius: 2%;
     height: 300px;
 }
+
+.imagenesCarousel:hover {
+    transition: transform .25s;
+    transform: scale(1.2);
+}
+
 .body{
-    background-color: #686564;
+    background-color: white;
+    margin-right:10% ;
+    margin-left: 10%;
 }
 
 .titulos{
     margin-top: 2% ;
-    color: white;
+    margin-left: 5%;
+    color: black;
 }

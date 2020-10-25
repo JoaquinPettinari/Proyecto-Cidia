@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Cabecera from './components/Cabecera/Cabecera'
+import HomePage from './components/HomePage/HomePage'
 // import PeliculasFavoritas from './components/BusquedaDePeliculas/PeliculasFavoritas.jsx'
 
 function App() {
   
   return (
     <div>
-        <Cabecera />
+        <HomePage />
         
 
     </div>

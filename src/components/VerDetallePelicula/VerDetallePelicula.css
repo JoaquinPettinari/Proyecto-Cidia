@@ -1,0 +1,103 @@
+/* Modal */
+.ReactModalPortal > div{
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: opacity .2s ease-in-out;
+    z-index: 999;
+}
+
+.modal-fondo {
+    background-color: rgba(37, 37, 37, 0.8);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.modal {
+    background: rgb(30, 30, 30);
+    color: white;
+    display: inline;
+    width: 30%;
+    height: 80%;
+    outline: none;
+    
+}
+
+/* Detalle Pelicula */
+.posterPelicula{
+    height: 30%;
+    width: 100%;
+    margin: 0%;
+}
+
+.tituloPelicula{
+    margin-top: 2%;
+    text-align: center;
+    margin-left: -10%;
+}
+
+.promedio{
+    float: left;
+    color: rgb(0, 255, 30);
+    margin-left: 4%;
+    margin-top: 4%;
+    text-align: center;
+}
+
+.plotPelicula{
+    margin-right: 4%;
+    margin-left: 4%;
+    text-align: center;
+}
+
+.contenedor{
+    float: left;
+    width: 33%;        
+    border-color: white;
+    border-width: 10px;
+}
+
+.tituloDetalles{
+    color: grey;
+    text-align: center;
+}
+
+.infoDetalles{
+
+    /* margin-right: 5%; */
+    text-align: center;
+}
+
+
+hr{
+    border-color: white;
+    margin-right: 4%;
+    margin-left: 4%;
+    width: 100%;
+}
+
+
+
+
+.button{
+    width: 15%;
+    height: 60px;
+    padding: 1%;
+    background-color: white;
+    border-color: aqua;
+}

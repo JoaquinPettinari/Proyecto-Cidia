@@ -1,22 +1,24 @@
 import React, {useState, useEffect} from 'react'
 import CarouselPelis from '../Carousel/CarouselPelis'
-import busquedaPorNombre from '../../api/busquedaPorNombre'
+import favoritasUsuario from '../../api/favoritasUsuario'
 
 
-function PeliculasFavoritas(props){
+
+function PeliculasFavoritas({titulo}){
     const [ peliculas , setPeliculas ] = useState({});
 
     useEffect(() => {
-        busquedaPorNombre(props.pelicula)
+        favoritasUsuario()
         .then(res => {
-            setPeliculas(res.data.Search);
+            console.log(res)
+            setPeliculas(res.data);
         })
     }, [])
 
     return(
         <CarouselPelis 
             peliculas={peliculas}
-            titulo={props.titulo + props.pelicula}
+            titulo={titulo}
         />
     );
     

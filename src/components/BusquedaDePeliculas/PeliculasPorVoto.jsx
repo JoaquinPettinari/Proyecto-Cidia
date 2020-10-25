@@ -1,25 +1,26 @@
 import React, {useState, useEffect} from 'react'
 import CarouselPelis from '../Carousel/CarouselPelis'
-import busquedaPorNombre from '../../api/busquedaPorNombre'
+import busquedaPorVoto from '../../api/busquedaPorVoto'
 
 
-function PeliculasPorNombre(props){
+
+function PeliculasPorVoto(props){
     const [ peliculas , setPeliculas ] = useState({});
 
     useEffect(() => {
-        busquedaPorNombre(props.pelicula)
+        busquedaPorVoto(props.tipo, props.tiempo)
         .then(res => {
-            setPeliculas(res.data.Search);
+            setPeliculas(res.data.results);
         })
     }, [])
 
     return(
         <CarouselPelis 
             peliculas={peliculas}
-            titulo={props.titulo +": "+ props.pelicula}
+            titulo={props.titulo}
         />
     );
     
 }
 
-export default PeliculasPorNombre;
+export default PeliculasPorVoto;

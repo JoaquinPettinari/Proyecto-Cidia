@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabecera */
+.cabecera{
+    height: 100px;  
+    width: 100%;
+    margin: auto;
+    background-color: black;
+    border-bottom: 1px solid;
+    border-color: black;
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+    margin-left: 1%;
+}
+
+.icono{
+    margin-right: 2%;
+}
+
+/* Input Buscador */
+.buscador{
+    margin-right: 2%;
+    color: black;
+    background-color: white;
+    border-width: 1px;
+    border-color: white;
+}
+
+.buscador:hover{
+    border-color: red;
+    border-width: 2px;
+}
+
+/* Botones menu  */
+.botonesMenu{
+    float: right;
+    margin-top: 1.5%;
+    /* margin-right: 3%; */
+    width: 8%;
+    height: 50px;
+    color: white;
+    background-color: black;
+    border-color: black ;
+}
+
+.botonesMenu:hover{
+    border-right-color: red;
+    border-left-color: red;
+}
