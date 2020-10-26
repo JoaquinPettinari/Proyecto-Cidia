@@ -33,7 +33,7 @@
     color: white;
     display: inline;
     width: 30%;
-    height: 80%;
+    height: 90%;
     outline: none;
     
 }
@@ -48,7 +48,6 @@
 .tituloPelicula{
     margin-top: 2%;
     text-align: center;
-    margin-left: -10%;
 }
 
 .promedio{
@@ -56,8 +55,9 @@
     color: rgb(0, 255, 30);
     margin-left: 4%;
     margin-top: 4%;
-    text-align: center;
+    position: absolute;
 }
+
 
 .plotPelicula{
     margin-right: 4%;
@@ -89,15 +89,15 @@ hr{
     margin-right: 4%;
     margin-left: 4%;
     width: 100%;
+    display: inline-block;
 }
 
+.success{
+    float: right;
+    color: white;
+    margin-right: 5%;
+}
 
-
-
-.button{
-    width: 15%;
-    height: 60px;
-    padding: 1%;
-    background-color: white;
-    border-color: aqua;
+.close{
+    margin-left: 5%;
 }
