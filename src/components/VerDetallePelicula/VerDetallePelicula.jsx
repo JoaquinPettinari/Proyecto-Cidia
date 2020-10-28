@@ -15,9 +15,9 @@ const estiloPersonalizado = {
     }
 };
 
-function VerDetallePelicula({pelicula,actores,director,open}){
+function VerDetallePelicula({pelicula,actores,director}){
 
-    const [show, setShow] = useState(open);
+    const [show, setShow] = useState(true);
     
     const closeModal = () => {
         setShow(false)    
@@ -25,6 +25,10 @@ function VerDetallePelicula({pelicula,actores,director,open}){
 
     const addFavourite = () => {
         agregarAFavoritos(pelicula.id, pelicula.poster_path)
+    }
+
+    const openModal = () => {
+        setShow(true)
     }
 
 
@@ -39,7 +43,7 @@ function VerDetallePelicula({pelicula,actores,director,open}){
                 className="modal"
                 overlayClassName="modal-fondo"
             >   
-                        
+                {console.log("estoy open")}
                 <img src={`${urlBase}/${pelicula.backdrop_path}`} alt="No se encontró imagen" className="posterPelicula"/>
                 
                     

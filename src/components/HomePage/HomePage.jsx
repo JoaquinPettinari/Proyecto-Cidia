@@ -61,8 +61,8 @@ function HomePage(){
             </Route>
             
             <Route path='/'>
-              <PeliculasPorVoto titulo={"Trending topic "} tipo={"movie"} tiempo={"day"} />
-              <PeliculasPorPopularidad titulo={"Most rating"}/>
+              <PeliculasPorVoto titulo={"Trending topic "} />
+              <PeliculasPorPopularidad titulo={"Most popular"}/>
             </Route>
 
             <h1></h1>

@@ -9,7 +9,7 @@ const urlBase = 'https://image.tmdb.org/t/p/w300'
 const Card = ({imagen,id}) => {
 
     const [pelicula, setPelicula] = useState('');
-    const [avanzar , setAvanzar] = useState(false);
+    const [show , setShow] = useState(false);
     const [actores, setActores] = useState([]);
     const [director, setDirector] = useState('');
 
@@ -28,7 +28,7 @@ const Card = ({imagen,id}) => {
                 
             })
             .then(res => {                                
-                setAvanzar(true)    
+                setShow(true)    
             })
         })        
     }
@@ -36,7 +36,7 @@ const Card = ({imagen,id}) => {
     return (
         <div>
             <img className="imagenesCarousel" src={imagen} onClick={() => detalleImagen()}/>
-            {avanzar && <VerDetallePelicula pelicula={pelicula} actores={actores} director={director} open={avanzar}/>}
+            {show && <VerDetallePelicula pelicula={pelicula} actores={actores} director={director}/>}
         </div>
     );
 }
@@ -67,7 +67,7 @@ export default function CarouselPelis(props){
     
     return (
         <div className='body'>
-            <h2 className="titulos">{props.titulo}</h2> 
+            
             <Carousel breakPoints={responsive}>
                 {
                     peliculas.map((pelicula) => {
