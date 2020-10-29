@@ -18,8 +18,8 @@ function PeliculasPorVoto({titulo}){
         <div>
             <h2 className="titulo">{titulo}</h2> 
             <CarouselPelis 
-                peliculas={peliculas}
-                titulo={titulo}
+                peliculas={peliculas}                
+                tipo={"movie"}
             />
         </div>
     );

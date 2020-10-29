@@ -16,6 +16,18 @@ import {
 } from "react-router-dom";
 
 
+/* 
+  Trello personal:
+
+  Cambiar los registros de la BD para que tambien guarde que es, si actor, tv o movie -> Modificar el fav para que muestre los 3 en los distintos carrouseles
+  Mejorar botones para cerrar la Modal y que se pueda volver a abrir
+  Agregar el data mining para que a la última película que le des fav, te tire los parecidos
+
+  Agregar video en detalle
+
+  Mejorar los detalles, a componentes que se pase el pro, así queda todo mas lindo
+*/ 
+
 function HomePage(){
 
   const [valor, setValor] = useState('');
@@ -57,7 +69,7 @@ function HomePage(){
             </Route>
 
             <Route path='/buscarPelicula'>                                                          
-              <ListaPeliculasBusqueda pelicula={valor} titulo={"Resultados de buscar "} listaPeliculas={peliculas} />
+              <ListaPeliculasBusqueda titulo={"Resultados de buscar: " + {valor}} listaPeliculas={peliculas} />
             </Route>
             
             <Route path='/'>

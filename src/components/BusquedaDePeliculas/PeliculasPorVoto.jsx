@@ -5,36 +5,37 @@ import './PeliculaPorVoto.css'
 
 
 function PeliculasPorVoto({titulo}){
-    const [ peliculas , setPeliculas ] = useState({});    
+    const [ peliculas , setPeliculas ] = useState({});
+    const [ tipo , setTipo ] = useState("movie");    
     
     const buscarPorMovie = () => {
         busquedaPorVoto("movie", "day")
         .then(res => {
             setPeliculas(res.data.results);            
-            console.log(peliculas)
+            setTipo("movie")
         })
     }
 
     const buscarPorTV = () => {
         busquedaPorVoto("tv", "day")
         .then(res => {
-            setPeliculas(res.data.results);            
-            console.log(peliculas)
+            setPeliculas(res.data.results);                        
+            setTipo("tv")
         })
     }
 
     const buscarPorPerson = () => {
         busquedaPorVoto("person", "day")
         .then(res => {
-            setPeliculas(res.data.results);            
-            console.log(peliculas)
+            setPeliculas(res.data.results);                        
+            setTipo("person")
         })
     }
 
     useEffect(() => {
         busquedaPorVoto("movie", "day")
         .then(res => {
-            setPeliculas(res.data.results);
+            setPeliculas(res.data.results);            
         })
     }, [])
 
@@ -55,7 +56,8 @@ function PeliculasPorVoto({titulo}){
 
                 </div>
             </div>            
-            <CarouselPelis peliculas={peliculas} />        
+            
+            <CarouselPelis peliculas={peliculas} tipo={tipo}/>        
         </div>
     );
 }

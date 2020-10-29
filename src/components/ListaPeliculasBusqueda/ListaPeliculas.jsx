@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './ListaPeliculasBusqueda.css'
 import VerDetallePelicula from '../VerDetallePelicula/VerDetallePelicula'
 import busquedaPorID from '../../api/busquedaPorID.js'
@@ -50,7 +50,7 @@ const Card = (props) => {
                 setActores(res.data)
 
                 setDirector(res.data.crew.filter(function(e) {                
-                    return e.job == "Director";
+                    return e.job === "Director";
                 }))                
             })
             
@@ -63,7 +63,7 @@ const Card = (props) => {
     return (
         
         <div className="card card-cascade wider etiqueta" key={props.id}>
-            <img className="view view-cascade overlay imagenes" src={props.imagen} alt="Image not found"/>
+            <img className="view view-cascade overlay imagenes" src={props.imagen}/>
             <div className="card-body texto" >
                 <h5 className="card-title"> {props.titulo} </h5>
                 <h6 className="card-subtitle mb-2 text-muted">{props.anio}</h6>
