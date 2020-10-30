@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import Modal from 'react-modal';
 import './VerDetallePelicula.css'
 import agregarAFavoritos from '../../api/agregarAFavoritos'
+import ColumnaDetaleTitulo from './ColumnaDetalleTitulo';
+import ColumnaDetalleDatos from './ColumnaDetalleDatos';
 
 const urlBase = 'https://image.tmdb.org/t/p/w1280'
 Modal.setAppElement('#root')
@@ -16,13 +18,13 @@ const estiloPersonalizado = {
     }
 };
 
-function DetalleTV({pelicula, actores}){
+function DetalleTV({serie, actores}){
 
     const [show, setShow] = useState(true);    
     
 
     const addFavourite = () => {
-        agregarAFavoritos(pelicula.id, pelicula.poster_path)
+        agregarAFavoritos(serie.id, serie.poster_path, "tv")
     }
 
 
@@ -36,91 +38,60 @@ function DetalleTV({pelicula, actores}){
                 className="modal"
                 overlayClassName="modal-fondo"
             >                   
-                <img src={`${urlBase}/${pelicula.backdrop_path}`} alt="No se encontró imagen" className="posterPelicula"/>
+                <img src={`${urlBase}/${serie.backdrop_path}`} alt="No se encontró imagen" className="posterPelicula"/>
                 
-                    
+                <ColumnaDetaleTitulo promedio={serie.vote_average} titulo={serie.name} votos={serie.vote_count} />
                 
-                <div className="promedio"><div>{pelicula.vote_average}/10</div></div>
-                <div className="tituloPelicula"><h2>{pelicula.name}</h2></div>                
                 <ColoredLine/>
-                <div><h6 className="plotPelicula">{pelicula.overview}</h6></div>
+                <div><h6 className="plotPelicula">{serie.overview}</h6></div>
                 <ColoredLine/>
 
-                {/* Arrancan los detalles */}
                 
-                
-                {/* CREATED BY */}
-                { pelicula.created_by[0] != null &&
-                <div className="contenedor">
-                    <div className="tituloDetalles">Created by</div>
-                    <div className="infoDetalles">
-                        {pelicula.created_by[0] && pelicula.created_by[0].name}
-                        {pelicula.created_by[1] && pelicula.created_by[1].name}
-                    </div>
-                </div>
-
-                }
-                {/* ACTORS */}
-                { actores.cast != null &&
-
-                    <div className="contenedor">
-                    {
-                        <div>                            
-                            <div className="tituloDetalles">Actors</div>
-                            <div className="infoDetalles">
-                                {actores.cast[0] && actores.cast[0].name}
-                                <br/>
-                                {actores.cast[1] && actores.cast[1].name}
-                                <br/>
-                                {actores.cast[2] && actores.cast[2].name}
-                                <br/>                                        
-                                {actores.cast[3] && actores.cast[3].name}
-                            </div>
-                            
+                <ColumnaDetalleDatos 
+                    tituloDato1={"Created by"} infoDato1={
+                        <div>
+                            {serie.created_by[0] && serie.created_by[0].name}
+                            {serie.created_by[1] && serie.created_by[1].name}
                         </div>
-                    }
-                </div>
-                }
+                    } validacionDato1={serie.created_by[0] != null}
                     
-                
-                {/* GENRES */}
-                <div className="contenedor">
-                    {                        
-                        pelicula.genres != null && 
-                        <div className="infoDetalles">
-                            <div className="tituloDetalles">Genres</div>                                                        
-                            {pelicula.genres[0].name || ''}
-                            {pelicula.genres[1] && ' - ' + pelicula.genres[1].name}
+                    tituloDato2={"Actors"} infoDato2={
+                        <div>
+                            {actores.cast[0] && actores.cast[0].name}
                             <br/>
-                            {pelicula.genres[2] && pelicula.genres[2].name}
-                            {pelicula.genres[3] && ' - ' + pelicula.genres[3].name}
-                            {pelicula.genres[4] && pelicula.genres[4].name}
+                            {actores.cast[1] && actores.cast[1].name}
+                            <br/>
+                            {actores.cast[2] && actores.cast[2].name}
+                            <br/>                                        
+                            {actores.cast[3] && actores.cast[3].name}
                         </div>
-                    } 
-                </div>
+                    } validacionDato2={actores.cast != null}
+
+                    tituloDato3={"Genres"} infoDato3={
+                        <div>
+                            {serie.genres[0].name || ''}
+                            {serie.genres[1] && ' - ' + serie.genres[1].name}
+                            <br/>
+                            {serie.genres[2] && serie.genres[2].name}
+                            {serie.genres[3] && ' - ' + serie.genres[3].name}
+                            {serie.genres[4] && serie.genres[4].name}
+                        </div>
+                    } validacionDato3={serie.genres != null}
+                />                                
+                                    
+                
                 <ColoredLine/>                
-                <div className="contenedor">
-                    <div className="tituloDetalles">First air date</div>
-                    <div className="infoDetalles">{pelicula.first_air_date}</div>                    
-                </div>
-                                                
 
-                <div className="contenedor">
-                    <div className="tituloDetalles">Lenguage</div>
-                    <div className="infoDetalles">{pelicula.languages[0] != null && pelicula.languages[0]}</div>
-                </div>
-                <div className="contenedor">
-                    <div className="tituloDetalles">Seasons/Episodes</div>
-                <div className="infoDetalles">{pelicula.number_of_seasons}/{pelicula.number_of_episodes}</div>
-                </div>
-                
-                
-
-                <ColoredLine/>               
-               
+                <ColumnaDetalleDatos 
+                    tituloDato1={"First air date"} infoDato1={serie.first_air_date} validacionDato1={true}
+                    tituloDato2={"Lenguage"} infoDato2={serie.languages[0]} validacionDato2={serie.languages[0]}
+                    tituloDato3={"Seasons/Episodes"} infoDato3={`${serie.number_of_seasons}/${serie.number_of_episodes}`} validacionDato3={true}                    
+                />
+                                                                                
+                <ColoredLine/>                              
 
                 <button className="btn btn-success btn-rounded success" onClick={addFavourite}> Add favourites </button>
-                {pelicula.homepage && <button className="btn btn-light success"><a href={pelicula.homepage}>Home page</a></button>}
+                {serie.homepage && <button className="btn btn-light success"><a href={serie.homepage}>Home page</a></button>}
                 <button className="btn btn-outline-warning waves-effect success" onClick={() => {setShow(false)}}>CLOSE</button>
                 
             </Modal>

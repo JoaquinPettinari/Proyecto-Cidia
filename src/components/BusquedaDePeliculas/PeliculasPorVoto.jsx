@@ -6,13 +6,13 @@ import './PeliculaPorVoto.css'
 
 function PeliculasPorVoto({titulo}){
     const [ peliculas , setPeliculas ] = useState({});
-    const [ tipo , setTipo ] = useState("movie");    
+    const [ tipo , setTipo ] = useState("movies");    
     
     const buscarPorMovie = () => {
         busquedaPorVoto("movie", "day")
         .then(res => {
             setPeliculas(res.data.results);            
-            setTipo("movie")
+            setTipo("movies")
         })
     }
 
@@ -20,7 +20,7 @@ function PeliculasPorVoto({titulo}){
         busquedaPorVoto("tv", "day")
         .then(res => {
             setPeliculas(res.data.results);                        
-            setTipo("tv")
+            setTipo("tvs")
         })
     }
 
@@ -28,7 +28,7 @@ function PeliculasPorVoto({titulo}){
         busquedaPorVoto("person", "day")
         .then(res => {
             setPeliculas(res.data.results);                        
-            setTipo("person")
+            setTipo("people")
         })
     }
 
@@ -51,7 +51,7 @@ function PeliculasPorVoto({titulo}){
                         <input className="form-check-input" type="radio" name="options" autocomplete="off" onClick={buscarPorTV} value="tv" /> TV
                     </label>
                     <label class="btn btn-light-blue form-check-label">
-                        <input className="form-check-input" type="radio" name="options" autocomplete="off" onClick={buscarPorPerson} value="person" /> Person
+                        <input className="form-check-input" type="radio" name="options" autocomplete="off" onClick={buscarPorPerson} value="person" /> Actor/Actress
                     </label>
 
                 </div>

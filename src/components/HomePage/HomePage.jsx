@@ -8,6 +8,7 @@ import PeliculasPorVoto from '../BusquedaDePeliculas/PeliculasPorVoto'
 import PeliculasPorPopularidad from '../BusquedaDePeliculas/PeliculasPorPopularidad'
 import busquedaPorNombre from '../../api/busquedaPorNombre.js'
 import PeliculasFavoritas from '../BusquedaDePeliculas/PeliculasFavoritas'
+import Footer from '../Footer/Footer'
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,14 +19,11 @@ import {
 
 /* 
   Trello personal:
-
-  Cambiar los registros de la BD para que tambien guarde que es, si actor, tv o movie -> Modificar el fav para que muestre los 3 en los distintos carrouseles
+ 
   Mejorar botones para cerrar la Modal y que se pueda volver a abrir
   Agregar el data mining para que a la última película que le des fav, te tire los parecidos
-
+  Cambiar estado del boton de que pueda sacar de favoritos
   Agregar video en detalle
-
-  Mejorar los detalles, a componentes que se pase el pro, así queda todo mas lindo
 */ 
 
 function HomePage(){
@@ -65,7 +63,9 @@ function HomePage(){
           
           <Switch>
             <Route path="/myFavourites">
-              <PeliculasFavoritas titulo={"Favourites movies:"}/>
+              <PeliculasFavoritas titulo={"Favourites movies:"} tipoFav={"movies"} />
+              <PeliculasFavoritas titulo={"Favourites tv series:"} tipoFav={"tvs"} />
+              <PeliculasFavoritas titulo={"Favourites actor/actress:"} tipoFav={"people"} />
             </Route>
 
             <Route path='/buscarPelicula'>                                                          
@@ -80,6 +80,7 @@ function HomePage(){
             <h1></h1>
           </Switch>
           
+          <Footer />
           
       </div>        
     </Router>

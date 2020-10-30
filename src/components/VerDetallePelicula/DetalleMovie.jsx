@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import Modal from 'react-modal';
 import './VerDetallePelicula.css'
 import agregarAFavoritos from '../../api/agregarAFavoritos'
+import ColumnaDetaleTitulo from './ColumnaDetalleTitulo';
+import ColumnaDetalleDatos from './ColumnaDetalleDatos';
 
 const urlBase = 'https://image.tmdb.org/t/p/w1280'
 Modal.setAppElement('#root')
@@ -25,7 +27,7 @@ function DetalleMovie({pelicula, actores, director}){
     }
 
     const addFavourite = () => {
-        agregarAFavoritos(pelicula.id, pelicula.poster_path)
+        agregarAFavoritos(pelicula.id, pelicula.poster_path, "movie")
     }
 
     const openModal = () => {
@@ -43,56 +45,30 @@ function DetalleMovie({pelicula, actores, director}){
                 className="modal"
                 overlayClassName="modal-fondo"
             >                   
-                <img src={`${urlBase}/${pelicula.backdrop_path}`} alt="No se encontró imagen" className="posterPelicula"/>
+                <img src={`${urlBase}/${pelicula.backdrop_path}`} alt="No se encontró imagen" className="posterPelicula"/>                                    
                 
-                    
+                <ColumnaDetaleTitulo promedio = {pelicula.vote_average} titulo = {pelicula.title} votos = {pelicula.vote_count} />
                 
-                <div className="promedio"><div>{pelicula.vote_average}/10</div></div>
-                <div className="tituloPelicula"><h2>{pelicula.title}</h2></div>                
                 <ColoredLine/>
                 <div><h6 className="plotPelicula">{pelicula.overview}</h6></div>
                 <ColoredLine/>
 
                 {/* Arrancan los detalles */}
-                
-                
-                {/* DIRECTOR */}
-                { director[0] != null &&
-                <div className="contenedor">
-                    <div className="tituloDetalles">Director</div>
-                    <div className="infoDetalles">{director[0].name}</div>
-                </div>
-
-                }
-                {/* ACTORS */}
-                { actores.cast != null &&
-
-                    <div className="contenedor">
-                    {
-                        <div>                            
-                            <div className="tituloDetalles">Actors</div>
-                            <div className="infoDetalles">
-                                {actores.cast[0] && actores.cast[0].name}
-                                <br/>
-                                {actores.cast[1] && actores.cast[1].name}
-                                <br/>
-                                {actores.cast[2] && actores.cast[2].name}
-                                <br/>                                        
-                                {actores.cast[3] && actores.cast[3].name}
-                            </div>
-                            
+                <ColumnaDetalleDatos 
+                    tituloDato1={"Director"} infoDato1={director[0].name} validacionDato1={director[0] != null}
+                    tituloDato2={"Actors"} infoDato2={    
+                        <div>
+                            {actores.cast[0] && actores.cast[0].name}
+                            <br/>
+                            {actores.cast[1] && actores.cast[1].name}
+                            <br/>
+                            {actores.cast[2] && actores.cast[2].name}
+                            <br/>                                     
+                            {actores.cast[3] && actores.cast[3].name}
                         </div>
-                    }
-                </div>
-                }
-                    
-                
-                {/* GENRES */}
-                <div className="contenedor">
-                    {                        
-                        pelicula.genres != null && 
-                        <div className="infoDetalles">
-                            <div className="tituloDetalles">Genres</div>                                                        
+                    } validacionDato2={actores.cast != null}
+                    tituloDato3={"Genres"} infoDato3={
+                        <div>
                             {pelicula.genres[0].name || ''}
                             {pelicula.genres[1] && ' - ' + pelicula.genres[1].name}
                             <br/>
@@ -100,29 +76,23 @@ function DetalleMovie({pelicula, actores, director}){
                             {pelicula.genres[3] && ' - ' + pelicula.genres[3].name}
                             {pelicula.genres[4] && pelicula.genres[4].name}
                         </div>
-                    } 
-                </div>
+                    } validacionDato3={pelicula.genres != null}
+                
+                />                                                                           
+                                
                 <ColoredLine/>                
-                                                
-                <div className="contenedor">
-                    <div className="tituloDetalles">Year</div>
-                    <div className="infoDetalles">{pelicula.release_date}</div>                    
-                </div>
 
-                <div className="contenedor">
-                    <div className="tituloDetalles">Lenguage</div>
-                    <div className="infoDetalles">{pelicula.spoken_languages != null && pelicula.spoken_languages[0].name}</div>
-                </div>
-                <div className="contenedor">
-                    <div className="tituloDetalles">Budget</div>
-                    <div className="infoDetalles">$ {pelicula.budget}</div>
-                </div>
+                <ColumnaDetalleDatos 
+                    tituloDato1={"Year"} infoDato1={pelicula.release_date} validacionDato1={true}
+                    tituloDato2={"Lenguage"} infoDato2={pelicula.spoken_languages[0].name} validacionDato2={pelicula.spoken_languages != null}
+                    tituloDato3={"Budget"} infoDato3={`$ ${pelicula.budget}`} validacionDato3={true}
+                />     
+
                 <ColoredLine/>
 
 
                 <button className="btn btn-success btn-rounded success" onClick={addFavourite}> Add favourites </button>
-                <button className="btn btn-light success"><a href={pelicula.homepage}>Home page</a></button>
-               
+                <button className="btn btn-light success"><a href={pelicula.homepage}>Home page</a></button>               
                 <button className="btn btn-outline-warning waves-effect success" onClick={closeModal}>CLOSE</button>
                 
                 

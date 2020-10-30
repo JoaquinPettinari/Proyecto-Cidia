@@ -35,7 +35,7 @@
     width: 30%;
     height: 90%;
     outline: none;
-    
+    overflow-y: auto;
 }
 
 /* Detalle Pelicula */
@@ -45,17 +45,24 @@
     margin: 0%;
 }
 
-.tituloPelicula{
+.father{
     margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tituloBibliografia{
     text-align: center;
+    margin-top: 2%;
 }
 
 .promedio{
-    float: left;
-    color: rgb(0, 255, 30);
-    margin-left: 4%;
-    margin-top: 4%;
-    position: absolute;
+    color: rgb(0, 255, 30);     
+}
+
+.cantidadVotos{
+    color: rgb(0, 255, 30);     
 }
 
 

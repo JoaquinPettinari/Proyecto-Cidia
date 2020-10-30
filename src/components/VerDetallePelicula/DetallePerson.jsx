@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Modal from 'react-modal';
 import './VerDetallePelicula.css'
 import agregarAFavoritos from '../../api/agregarAFavoritos'
+import ColumnaDetalleDatos from './ColumnaDetalleDatos';
 
 const urlBase = 'https://image.tmdb.org/t/p/w1280'
 Modal.setAppElement('#root')
@@ -22,7 +23,7 @@ function DetallePerson({bibliografia, actores}){
     
 
     const addFavourite = () => {
-        agregarAFavoritos(bibliografia.id, bibliografia.poster_path)
+        agregarAFavoritos(bibliografia.id, bibliografia.profile_path, "person")
     }
 
 
@@ -36,29 +37,22 @@ function DetallePerson({bibliografia, actores}){
                 className="modal"
                 overlayClassName="modal-fondo"
             >                                                                                                       
-                <div className="tituloPelicula"><h2>{bibliografia.name}</h2></div>                
+                
+                <div className="tituloBibliografia"><h2>{bibliografia.name}</h2></div>                
                 <ColoredLine/>
                 <div><h6 className="plotPelicula">{bibliografia.biography}</h6></div>
                 <ColoredLine/>
-                <div className="contenedor">
-                    <div className="tituloDetalles">Birthday</div>
-                    <div className="infoDetalles">{bibliografia.birthday}</div>
-                </div>
-                <div className="contenedor">
-                    <div className="tituloDetalles">Deathday</div>
-                    <div className="infoDetalles">{bibliografia.deathday || 'Living'}</div>
-                </div>                
-                <div className="contenedor">
-                    <div className="tituloDetalles">Born in</div>
-                    <div className="infoDetalles">{bibliografia.place_of_birth}</div>
-                </div>
-                <ColoredLine/>
-                {/* Arrancan los detalles */}                                                                               
-                    
+
+                <ColumnaDetalleDatos 
+                    tituloDato1={"Birthday"} infoDato1={bibliografia.birthday} validacionDato1={true}
+                    tituloDato2={"Deathday"} infoDato2={bibliografia.deathday || 'Living'} validacionDato2={true}
+                    tituloDato3={"Born in"} infoDato3={bibliografia.place_of_birth} validacionDato3={true}
                 
+                />
+
+                <ColoredLine/>                                    
                 
                
-
                 <button className="btn btn-success btn-rounded success" onClick={addFavourite}> Add favourites </button>
                 {bibliografia.homepage && <button className="btn btn-light success"><a href={bibliografia.homepage}>Home page</a></button>}
                 <button className="btn btn-outline-warning waves-effect success" onClick={() => {setShow(false)}}>CLOSE</button>
