@@ -14,7 +14,7 @@ function VerDetallePelicula(props){
         <div>
 
             {/* usar el prop para pasar a detalleMovie y agregar el tipo "movie" */}
-            {props.imMovie && <DetalleMovie pelicula={props.pelicula} actores={props.actores} director={props.director} />}
+            {props.imMovie && <DetalleMovie {...props} />}
             {props.imTV && <DetalleTV serie={props.pelicula} actores={props.actores} />}
             {props.isPerson && <DetallePerson bibliografia={props.bibliografia}/>}
         

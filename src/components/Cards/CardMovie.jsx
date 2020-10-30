@@ -34,7 +34,7 @@ const CardMovie = ({imagen,id}) => {
     return (
         <div>
             <img className="imagenesCarousel" src={imagen} onClick={() => detalleImagen()}/>
-            {show && <VerDetallePelicula pelicula={pelicula} actores={actores} director={director} imMovie={true}/>}
+            {show && <VerDetallePelicula pelicula={pelicula} actores={actores} director={director} imMovie={true} setShow={setShow} show={show} />}
         </div>
     );
 }

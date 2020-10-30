@@ -18,9 +18,7 @@ const estiloPersonalizado = {
     }
 };
 
-function DetalleMovie({pelicula, actores, director}){
-
-    const [show, setShow] = useState(true);
+function DetalleMovie({pelicula, actores, director, setShow, show}){    
     
     const closeModal = () => {
         setShow(false)    

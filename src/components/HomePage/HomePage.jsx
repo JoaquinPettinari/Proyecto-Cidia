@@ -24,6 +24,7 @@ import {
   Agregar el data mining para que a la última película que le des fav, te tire los parecidos
   Cambiar estado del boton de que pueda sacar de favoritos
   Agregar video en detalle
+  outline: none -> css
 */ 
 
 function HomePage(){
