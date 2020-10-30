@@ -69,7 +69,7 @@ function HomePage(){
             </Route>
 
             <Route path='/buscarPelicula'>                                                          
-              <ListaPeliculasBusqueda titulo={"Resultados de buscar: " + {valor}} listaPeliculas={peliculas} />
+              <ListaPeliculasBusqueda titulo={"Search result: " + {valor}} listaPeliculas={peliculas} />
             </Route>
             
             <Route path='/'>
