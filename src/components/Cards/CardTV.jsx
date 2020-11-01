@@ -24,7 +24,7 @@ const CardMovie = ({imagen,id}) => {
             .then(res => {                                
                 buscarUnElemento(id)
                 .then(res => {
-                    if(res == []){
+                    if(res === []){
                         setYaSoyFav(false)
                     }
                     else{

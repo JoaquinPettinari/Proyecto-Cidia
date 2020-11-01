@@ -8,9 +8,11 @@
 .botonesOnChange{
     margin-top: 1.7%;
     margin-left: 1%;
+    color: white;
 }
 
 .father{
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }

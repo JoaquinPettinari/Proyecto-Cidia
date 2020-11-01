@@ -41,24 +41,25 @@ function PeliculasPorVoto({titulo}){
 
     return(
         <div>
-            <div className="father tituloMasOpciones">
+            <div className="father">
+                
                 <h2 className='titulo'>{titulo}</h2> 
-                <div className="btn-group botonesOnChange" data-toggle="buttons">
-
-                    <label className="btn btn-light-blue form-check-label active">
-                        <input className="form-check-input" type="radio" name="options" autocomplete="off" onClick={buscarPorMovie} value="movie" defaultChecked/> Movie
+                
+                <div className="btn-group botonesOnChange" data-toggle="buttons">                
+                    <label className="btn elegant-color-dark form-check-label active">
+                        <input className="form-check-input" type="radio" name="options" autoComplete="off" onClick={buscarPorMovie} value="movie" defaultChecked/> Movie
                     </label>
-                    <label className="btn btn-light-blue form-check-label">
-                        <input className="form-check-input" type="radio" name="options" autocomplete="off" onClick={buscarPorTV} value="tv" /> TV
+                    <label className="btn elegant-color-dark form-check-label">
+                        <input className="form-check-input" type="radio" name="options" autoComplete="off" onClick={buscarPorTV} value="tv" /> TV
                     </label>
-                    <label className="btn btn-light-blue form-check-label">
-                        <input className="form-check-input" type="radio" name="options" autocomplete="off" onClick={buscarPorPerson} value="person" /> Actor/Actress
+                    <label className="btn elegant-color-dark form-check-label">
+                        <input className="form-check-input" type="radio" name="options" autoComplete="off" onClick={buscarPorPerson} value="person" /> Actors
                     </label>
                 </div>
 
             </div>            
             
-            <CarouselPelis peliculas={peliculas} tipo={tipo}/>        
+            <CarouselPelis peliculas={peliculas} tipo={tipo}/>     
         </div>
     );
 }

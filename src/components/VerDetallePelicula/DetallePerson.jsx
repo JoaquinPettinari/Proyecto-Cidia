@@ -1,11 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Modal from 'react-modal';
 import './VerDetallePelicula.css'
 import agregarAFavoritos from '../../api/agregarAFavoritos'
 import ColumnaDetalleDatos from './ColumnaDetalleDatos';
 import eliminarDeFavoritos from '../../api/eliminarDeFavoritos'
 Modal.setAppElement('#root')
-const urlBase = 'https://image.tmdb.org/t/p/w1280'
 const estiloPersonalizado = {
     content : {
       top                   : '50%',
