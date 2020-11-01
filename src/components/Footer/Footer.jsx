@@ -27,7 +27,7 @@ function Footer(){
                         <p><a href="#!">MDBootstrap</a></p>
                     </div>
 
-                    <hr class="w-100 clearfix d-md-none"></hr>
+                    <hr className="w-100 clearfix d-md-none"></hr>
 
                     <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                         <h6 className="text-uppercase mb-4 font-weight-bold">Useful links</h6>

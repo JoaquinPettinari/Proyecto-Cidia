@@ -23,7 +23,7 @@ function ListaPeliculasBusqueda(props) {
                                 imagen={`${urlBase}/${pelicula.poster_path}`}
                                 titulo={pelicula.original_title}
                                 anio={pelicula.release_date}
-                                promedio={pelicula.vote_average}
+                                promedio={pelicula.vote_average}                                
                             />
                         )
                     })
@@ -51,12 +51,12 @@ const Card = (props) => {
                 setActores(res.data)
 
                 setDirector(res.data.crew.filter(function(e) {                
-                    return e.job == "Director";
+                    return e.job === "Director";
                 }))
                 
             })
             .then(res => {                                
-                setShow(true)    
+                setShow(true)                
             })
         })  
     }

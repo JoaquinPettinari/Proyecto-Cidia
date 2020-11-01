@@ -20,7 +20,7 @@ const CardPerson = ({imagen,id}) => {
         .then(res => {                                
             buscarUnElemento(id)
             .then(res => {
-                if(res == []){
+                if(res === []){
                     setYaSoyFav(false)
                 }
                 else{
@@ -34,7 +34,7 @@ const CardPerson = ({imagen,id}) => {
 
     return (
         <div>
-            <img className="imagenesCarousel" src={imagen} onClick={() => detalleImagen()}/>
+            <img className="imagenesCarousel" src={imagen} onClick={() => detalleImagen()} alt="Photo"/>
             {show && <DetallePerson bibliografia={bibliografia} setShow={setShow} show={show} yaSoyFav={yaSoyFav} setYaSoyFav={setYaSoyFav} />}
         </div>
     );

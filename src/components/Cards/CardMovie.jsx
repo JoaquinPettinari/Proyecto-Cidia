@@ -23,14 +23,14 @@ const CardMovie = ({imagen,id}) => {
                 setActores(res.data)
 
                 setDirector(res.data.crew.filter(function(e) {                
-                    return e.job == "Director";
+                    return e.job === "Director";
                 }))
                 
             })
             .then(res => {                                
                 buscarUnElemento(id)
                 .then(res => {
-                    if(res == []){
+                    if(res === []){
                         setYaSoyFav(false)
                     }
                     else{
