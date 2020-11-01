@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from '../../assets/logo.png'
 import './HomePage.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -19,18 +19,20 @@ import {
 
 /* 
   Trello personal:
- 
-  Mejorar botones para cerrar la Modal y que se pueda volver a abrir
+  
   Agregar el data mining para que a la última película que le des fav, te tire los parecidos
-  Cambiar estado del boton de que pueda sacar de favoritos
+  
   Agregar video en detalle
-  outline: none -> css
+  
 */ 
 
 function HomePage(){
 
   const [valor, setValor] = useState('');
   const [peliculas, setPeliculas] = useState([])
+  const [mostrarFooter, setMostrarFooter] = useState(true);
+  const [idMining, setID] = useState(0);
+
 
   const cambiarValor = (event) => {
     setValor(event.target.value);
@@ -40,7 +42,12 @@ function HomePage(){
     busquedaPorNombre(valor)
       .then(res => {        
         setPeliculas(res.data.results);
+        setMostrarFooter(false);
       })
+  }
+
+  const abrirFooter = () => {
+    setMostrarFooter(true)
   }
 
   return (
@@ -50,10 +57,10 @@ function HomePage(){
           <Link to="/cerrarSesion">
             <button className='botonesMenu'>Cerrar sesión</button>
           </Link>
-          <Link to="/myFavourites">
+          <Link to="/myFavourites" onClick={abrirFooter}>
             <button className='botonesMenu'>My favourites</button>          
           </Link>
-          <Link to="/">
+          <Link to="/" onClick={abrirFooter}>
             <button className='botonesMenu'>Home</button>
           </Link>
           <Link to='/buscarPelicula' onClick={buscarPelicula}>
@@ -61,27 +68,28 @@ function HomePage(){
           </Link>
           <input type="text" onChange={cambiarValor} className="botonesMenu buscador" placeholder="Search a movie" value={valor}></input>
               
-          
-          <Switch>
-            <Route path="/myFavourites">
-              <PeliculasFavoritas titulo={"Favourites movies:"} tipoFav={"movies"} />
-              <PeliculasFavoritas titulo={"Favourites tv series:"} tipoFav={"tvs"} />
-              <PeliculasFavoritas titulo={"Favourites actor/actress:"} tipoFav={"people"} />
-            </Route>
+          <div className="body">
 
-            <Route path='/buscarPelicula'>                                                          
-              <ListaPeliculasBusqueda titulo={"Search result: " + {valor}} listaPeliculas={peliculas} />
-            </Route>
-            
-            <Route path='/'>
-              <PeliculasPorVoto titulo={"Trending topic "} />
-              <PeliculasPorPopularidad titulo={"Most popular"}/>
-            </Route>
+            <Switch>
+              <Route path="/myFavourites">
+                <PeliculasFavoritas titulo={"Favourites movies:"} tipoFav={"movies"} />
+                <PeliculasFavoritas titulo={"Favourites tv series:"} tipoFav={"tvs"} />
+                <PeliculasFavoritas titulo={"Favourites actor/actress:"} tipoFav={"people"} />
+              </Route>
 
-            <h1></h1>
-          </Switch>
+              <Route path='/buscarPelicula'>                                                          
+                <ListaPeliculasBusqueda busqueda={valor} listaPeliculas={peliculas} />                
+              </Route>
+              
+              <Route path='/'>                
+                <PeliculasPorVoto titulo={"Trending topic "} />
+                <PeliculasPorPopularidad titulo={"Most popular"}/>                
+              </Route>
+              
+            </Switch>
+          </div>
+          {mostrarFooter && <Footer />}
           
-          <Footer />
           
       </div>        
     </Router>

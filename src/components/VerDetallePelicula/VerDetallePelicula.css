@@ -45,26 +45,10 @@
     margin: 0%;
 }
 
-.father{
-    margin-top: 2%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
 .tituloBibliografia{
     text-align: center;
     margin-top: 2%;
 }
-
-.promedio{
-    color: rgb(0, 255, 30);     
-}
-
-.cantidadVotos{
-    color: rgb(0, 255, 30);     
-}
-
 
 .plotPelicula{
     margin-right: 4%;
@@ -99,12 +83,12 @@ hr{
     display: inline-block;
 }
 
-.success{
-    float: right;
-    color: white;
-    margin-right: 5%;
-}
-
 .close{
     margin-left: 5%;
+}
+
+.botonesOpciones{
+    display: flex;
+    justify-content: space-around;    
+    align-items: center;
 }

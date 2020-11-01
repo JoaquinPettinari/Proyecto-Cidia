@@ -1,30 +1,35 @@
-.imagenes{
-    margin-top: 4%;
-    height: 210px;
-    width: 210px;
+
+.Flexbox{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
 }
 
-.etiqueta{
-    align-items: center;
-    width: 18rem;
-    height: 400px;
-    margin-top: 1%;
-    margin-left: 8%;
-    float: left;
+.tituloBusquedaCard{
+    margin-left: 5%;
+    margin-top: 2%;
+    color: black;
 }
 
-.titulo{
-    margin-left: 8%;
-    margin-top: 5%;
+.etiquetaCard{
+   width: 15%;
+   margin-left: 5%;
+   margin-right: 5%;
+   margin-top: 2%;
+   
 }
-.texto{
+
+.tituloDentroCard{
+    height: 100px;
+}
+
+.cardBody{
     text-align: center;
 }
-
-.verDetalle{
-    margin-bottom: 10%;
+.imagenesCard{
+    width: 100%;
+    height: 330px;
 }
 
 
-/* Buttom */
 

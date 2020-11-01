@@ -1,12 +1,16 @@
 
-
-
 .titulo{
     margin-top: 2% ;
-    margin-left: 14%;    
+    margin-left: 9.5%;    
     color: black;
 }
 
 .botonesOnChange{
-    margin-left: 13.75%;
+    margin-top: 1.7%;
+    margin-left: 1%;
+}
+
+.father{
+    display: flex;
+    justify-content: flex-start;
 }

@@ -4,7 +4,8 @@ import './VerDetallePelicula.css'
 import agregarAFavoritos from '../../api/agregarAFavoritos'
 import ColumnaDetaleTitulo from './ColumnaDetalleTitulo';
 import ColumnaDetalleDatos from './ColumnaDetalleDatos';
-
+import eliminarDeFavoritos from '../../api/eliminarDeFavoritos'
+Modal.setAppElement('#root')
 const urlBase = 'https://image.tmdb.org/t/p/w1280'
 Modal.setAppElement('#root')
 const estiloPersonalizado = {
@@ -18,13 +19,17 @@ const estiloPersonalizado = {
     }
 };
 
-function DetalleTV({serie, actores}){
-
-    const [show, setShow] = useState(true);    
+function DetalleTV({serie, actores, show, setShow, yaSoyFav ,setYaSoyFav}){
     
 
+    const sacarFavoritos = () => {
+        eliminarDeFavoritos(serie.id)
+        setYaSoyFav(false)
+    }
+
     const addFavourite = () => {
-        agregarAFavoritos(serie.id, serie.poster_path, "tv")
+        agregarAFavoritos(serie.id, serie.poster_path, "tv")       
+        setYaSoyFav(true)
     }
 
 
@@ -37,7 +42,7 @@ function DetalleTV({serie, actores}){
                 style={estiloPersonalizado}
                 className="modal"
                 overlayClassName="modal-fondo"
-            >                   
+            >                                              
                 <img src={`${urlBase}/${serie.backdrop_path}`} alt="No se encontró imagen" className="posterPelicula"/>
                 
                 <ColumnaDetaleTitulo promedio={serie.vote_average} titulo={serie.name} votos={serie.vote_count} />
@@ -89,10 +94,14 @@ function DetalleTV({serie, actores}){
                 />
                                                                                 
                 <ColoredLine/>                              
+                <div className="botonesOpciones">
+                    <button className="btn btn-outline-warning waves-effect" onClick={() => {setShow(false)}}>CLOSE</button>
+                    
+                    {serie.homepage && <button className="btn btn-light"><a href={serie.homepage}>Home page</a></button>}
 
-                <button className="btn btn-success btn-rounded success" onClick={addFavourite}> Add favourites </button>
-                {serie.homepage && <button className="btn btn-light success"><a href={serie.homepage}>Home page</a></button>}
-                <button className="btn btn-outline-warning waves-effect success" onClick={() => {setShow(false)}}>CLOSE</button>
+                    {!yaSoyFav && <button className="btn btn-success btn-rounded" onClick={addFavourite}> Add favourites </button>}
+                    {yaSoyFav && <button type="button" className="btn btn-danger" onClick={sacarFavoritos} >Remove favourites</button>}
+                </div>
                 
             </Modal>
         </div>

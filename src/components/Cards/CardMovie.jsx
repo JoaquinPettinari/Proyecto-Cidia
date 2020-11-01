@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import busquedaPorID from '../../api/busquedaPorID'
 import busquedaDeActores from '../../api/busquedaDeActores'
-import VerDetallePelicula from '../VerDetallePelicula/VerDetallePelicula'
+import buscarUnElemento from '../../api/buscarUnElemento'
+import DetalleMovie from '../VerDetallePelicula/DetalleMovie'
 import './Cards.css'
 
 const CardMovie = ({imagen,id}) => {
@@ -10,6 +11,7 @@ const CardMovie = ({imagen,id}) => {
     const [show , setShow] = useState(false);
     const [actores, setActores] = useState([]);
     const [director, setDirector] = useState('');
+    const [yaSoyFav, setYaSoyFav] = useState(false);
 
     const detalleImagen = () => {
         
@@ -26,15 +28,24 @@ const CardMovie = ({imagen,id}) => {
                 
             })
             .then(res => {                                
-                setShow(true)    
+                buscarUnElemento(id)
+                .then(res => {
+                    if(res == []){
+                        setYaSoyFav(false)
+                    }
+                    else{
+                        setYaSoyFav(true)
+                    }
+                })
+                setShow(true)
             })
         })        
     }
 
     return (
-        <div>
+        <div className="marco">
             <img className="imagenesCarousel" src={imagen} onClick={() => detalleImagen()}/>
-            {show && <VerDetallePelicula pelicula={pelicula} actores={actores} director={director} imMovie={true} setShow={setShow} show={show} />}
+            {show && <DetalleMovie pelicula={pelicula} actores={actores} director={director} setShow={setShow} show={show} yaSoyFav={yaSoyFav} setYaSoyFav={setYaSoyFav}  />}
         </div>
     );
 }

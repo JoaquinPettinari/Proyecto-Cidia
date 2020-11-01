@@ -1,12 +1,14 @@
 import React , {useState} from 'react'
-import VerDetallePelicula from '../VerDetallePelicula/VerDetallePelicula'
+import DetallePerson from '../VerDetallePelicula/DetallePerson'
 import './Cards.css'
 import informacionActor from '../../api/informacionActor'
+import buscarUnElemento from '../../api/buscarUnElemento'
 
 const CardPerson = ({imagen,id}) => {
 
     const [bibliografia, setBibliografia] = useState('');
     const [show , setShow] = useState(false);
+    const [yaSoyFav, setYaSoyFav] = useState(false);
 
     const detalleImagen = () => {
         
@@ -15,8 +17,17 @@ const CardPerson = ({imagen,id}) => {
             setBibliografia(res.data)  
                                                        
         })
-        .then(res => {
-            setShow(true)            
+        .then(res => {                                
+            buscarUnElemento(id)
+            .then(res => {
+                if(res == []){
+                    setYaSoyFav(false)
+                }
+                else{
+                    setYaSoyFav(true)
+                }
+            })
+            setShow(true)
         })
 
     }
@@ -24,7 +35,7 @@ const CardPerson = ({imagen,id}) => {
     return (
         <div>
             <img className="imagenesCarousel" src={imagen} onClick={() => detalleImagen()}/>
-            {show && <VerDetallePelicula bibliografia={bibliografia} isPerson={true}/>}
+            {show && <DetallePerson bibliografia={bibliografia} setShow={setShow} show={show} yaSoyFav={yaSoyFav} setYaSoyFav={setYaSoyFav} />}
         </div>
     );
 }

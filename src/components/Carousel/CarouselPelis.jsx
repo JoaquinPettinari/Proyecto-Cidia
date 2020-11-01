@@ -24,7 +24,7 @@ export default function CarouselPelis(props){
     const responsive = [
         { width: 1 , itemsToShow: 1 },
         { width: 500 , itemsToShow: 2 },
-        { width: 768 , itemsToShow: 4 },
+        { width: 768 , itemsToShow: 5 },
         { width: 1200 , itemsToShow: 6 },
         { width: 1500 , itemsToShow: 7 }
     ]
@@ -37,8 +37,8 @@ export default function CarouselPelis(props){
                     peliculas.map((pelicula) => {
                         return (
                             <div>
-                                {props.tipo == "tvs" && <CardTV id={pelicula.id} imagen={`${urlBase}/${pelicula.poster_path}`}/>}
                                 {props.tipo == "movies" && <CardMovie id={pelicula.id} imagen={`${urlBase}/${pelicula.poster_path}`} /> }
+                                {props.tipo == "tvs" && <CardTV id={pelicula.id} imagen={`${urlBase}/${pelicula.poster_path}`}/>}
                                 {props.tipo == "people" && <CardPerson id={pelicula.id} imagen={`${urlBase}/${pelicula.profile_path}`}/>}
 
                             </div>)

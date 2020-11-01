@@ -2,9 +2,16 @@
     margin-top: 5%;
     border-radius: 2%;
     height: 300px;
+    display: inline-block;
 }
 
 .imagenesCarousel:hover {
     transition: transform .25s;
     transform: scale(1.2);
+    display: block;
+    display: inline-block;
+}
+
+.marco{
+    line-height:0;
 }

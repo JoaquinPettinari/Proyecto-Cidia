@@ -2,9 +2,10 @@ import React, {useState} from 'react'
 import Modal from 'react-modal';
 import './VerDetallePelicula.css'
 import agregarAFavoritos from '../../api/agregarAFavoritos'
+import eliminarDeFavoritos from '../../api/eliminarDeFavoritos';
 import ColumnaDetaleTitulo from './ColumnaDetalleTitulo';
 import ColumnaDetalleDatos from './ColumnaDetalleDatos';
-
+Modal.setAppElement('#root')
 const urlBase = 'https://image.tmdb.org/t/p/w1280'
 Modal.setAppElement('#root')
 const estiloPersonalizado = {
@@ -18,21 +19,19 @@ const estiloPersonalizado = {
     }
 };
 
-function DetalleMovie({pelicula, actores, director, setShow, show}){    
-    
-    const closeModal = () => {
-        setShow(false)    
+function DetalleMovie({pelicula, actores, director, setShow, show, yaSoyFav, setYaSoyFav}){            
+
+    const sacarFavoritos = () => {
+        eliminarDeFavoritos(pelicula.id)
+        setYaSoyFav(false)
     }
 
     const addFavourite = () => {
         agregarAFavoritos(pelicula.id, pelicula.poster_path, "movie")
+        setYaSoyFav(true)
     }
-
-    const openModal = () => {
-        setShow(true)
-    }
-
-
+    
+    
     return (
         <div>
             <Modal
@@ -88,11 +87,12 @@ function DetalleMovie({pelicula, actores, director, setShow, show}){
 
                 <ColoredLine/>
 
-
-                <button className="btn btn-success btn-rounded success" onClick={addFavourite}> Add favourites </button>
-                <button className="btn btn-light success"><a href={pelicula.homepage}>Home page</a></button>               
-                <button className="btn btn-outline-warning waves-effect success" onClick={closeModal}>CLOSE</button>
-                
+                <div className="botonesOpciones">
+                    <button className="btn btn-outline-warning waves-effect success" onClick={() => {setShow(false)}}>CLOSE</button>
+                    {pelicula.homepage && <button className="btn btn-light success"><a href={pelicula.homepage}>Home page</a></button>}
+                    {!yaSoyFav && <button className="btn btn-success btn-rounded success" onClick={addFavourite}> Add favourites </button>}
+                    {yaSoyFav && <button type="button" className="btn btn-danger" onClick={sacarFavoritos}>Remove favourites</button>}
+                </div>
                 
             </Modal>
         </div>

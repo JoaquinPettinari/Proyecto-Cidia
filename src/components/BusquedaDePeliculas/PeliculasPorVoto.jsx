@@ -41,20 +41,21 @@ function PeliculasPorVoto({titulo}){
 
     return(
         <div>
-            <div className="tituloMasOpciones">
+            <div className="father tituloMasOpciones">
                 <h2 className='titulo'>{titulo}</h2> 
                 <div className="btn-group botonesOnChange" data-toggle="buttons">
-                    <label class="btn btn-light-blue form-check-label active">
+
+                    <label className="btn btn-light-blue form-check-label active">
                         <input className="form-check-input" type="radio" name="options" autocomplete="off" onClick={buscarPorMovie} value="movie" defaultChecked/> Movie
                     </label>
-                    <label class="btn btn-light-blue form-check-label">
+                    <label className="btn btn-light-blue form-check-label">
                         <input className="form-check-input" type="radio" name="options" autocomplete="off" onClick={buscarPorTV} value="tv" /> TV
                     </label>
-                    <label class="btn btn-light-blue form-check-label">
+                    <label className="btn btn-light-blue form-check-label">
                         <input className="form-check-input" type="radio" name="options" autocomplete="off" onClick={buscarPorPerson} value="person" /> Actor/Actress
                     </label>
-
                 </div>
+
             </div>            
             
             <CarouselPelis peliculas={peliculas} tipo={tipo}/>        

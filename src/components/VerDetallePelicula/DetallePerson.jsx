@@ -3,9 +3,9 @@ import Modal from 'react-modal';
 import './VerDetallePelicula.css'
 import agregarAFavoritos from '../../api/agregarAFavoritos'
 import ColumnaDetalleDatos from './ColumnaDetalleDatos';
-
-const urlBase = 'https://image.tmdb.org/t/p/w1280'
+import eliminarDeFavoritos from '../../api/eliminarDeFavoritos'
 Modal.setAppElement('#root')
+const urlBase = 'https://image.tmdb.org/t/p/w1280'
 const estiloPersonalizado = {
     content : {
       top                   : '50%',
@@ -17,13 +17,16 @@ const estiloPersonalizado = {
     }
 };
 
-function DetallePerson({bibliografia, actores}){
+function DetallePerson({bibliografia, setShow, show, yaSoyFav, setYaSoyFav}){            
 
-    const [show, setShow] = useState(true);    
-    
+    const sacarFavoritos = () => {
+        eliminarDeFavoritos(bibliografia.id)
+        setYaSoyFav(false)
+    }
 
     const addFavourite = () => {
         agregarAFavoritos(bibliografia.id, bibliografia.profile_path, "person")
+        setYaSoyFav(true)
     }
 
 
@@ -53,9 +56,14 @@ function DetallePerson({bibliografia, actores}){
                 <ColoredLine/>                                    
                 
                
-                <button className="btn btn-success btn-rounded success" onClick={addFavourite}> Add favourites </button>
-                {bibliografia.homepage && <button className="btn btn-light success"><a href={bibliografia.homepage}>Home page</a></button>}
-                <button className="btn btn-outline-warning waves-effect success" onClick={() => {setShow(false)}}>CLOSE</button>
+                <div className="botonesOpciones">
+                    <button className="btn btn-outline-warning waves-effect success" onClick={() => {setShow(false)}}>CLOSE</button>
+
+                    {bibliografia.homepage && <button className="btn btn-light success"><a href={bibliografia.homepage}>Home page</a></button>}
+
+                    {!yaSoyFav && <button className="btn btn-success btn-rounded" onClick={addFavourite}> Add favourites </button>}
+                    {yaSoyFav && <button type="button" className="btn btn-danger" onClick={sacarFavoritos} >Remove favourites</button>}
+                </div>
                 
             </Modal>
         </div>

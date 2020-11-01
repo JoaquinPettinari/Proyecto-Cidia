@@ -9,9 +9,8 @@ function PeliculasFavoritas({titulo, tipoFav}){
 
     useEffect(() => {
         favoritasUsuario(tipoFav)
-        .then(res => {
-            console.log(res)
-            setPeliculas(res.data);
+        .then(res => {            
+            setPeliculas(res.data.reverse());
         })
     }, [])
 

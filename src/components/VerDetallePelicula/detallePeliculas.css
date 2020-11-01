@@ -1,0 +1,14 @@
+.fatherTitulo{
+    margin-top: 2%;    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.promedioTitulo{
+    color: rgb(0, 255, 30);     
+}
+
+.cantidadVotosTitulo{
+    color: rgb(0, 255, 30);     
+}
