@@ -23,18 +23,21 @@ const CardMovie = ({imagen,id}) => {
                 setActores(res.data)
 
                 setDirector(res.data.crew.filter(function(e) {                
-                    return e.job === "Director";
+                    return e.job == "Director";
                 }))
                 
             })
             .then(res => {                                
                 buscarUnElemento(id)
-                .then(res => {
-                    if(res === []){
-                        setYaSoyFav(false)
+                .then(respuesta => {                    
+                    {console.log(respuesta.data.length)}
+                    if(respuesta.data.length == 0){
+                        setYaSoyFav(false)                        
+                        {console.log("No estoy")}
                     }
                     else{
                         setYaSoyFav(true)
+                        {console.log("Estoy")}
                     }
                 })
                 setShow(true)
@@ -43,7 +46,7 @@ const CardMovie = ({imagen,id}) => {
     }
 
     return (
-        <div className="marco">
+        <div className="marco">                    
             <img className="imagenesCarousel" src={imagen} onClick={() => detalleImagen()}/>
             {show && <DetalleMovie pelicula={pelicula} actores={actores} director={director} setShow={setShow} show={show} yaSoyFav={yaSoyFav} setYaSoyFav={setYaSoyFav}  />}
         </div>

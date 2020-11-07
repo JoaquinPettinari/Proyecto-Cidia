@@ -3,6 +3,7 @@ import './ListaPeliculasBusqueda.css'
 import busquedaPorID from '../../api/busquedaPorID.js'
 import busquedaDeActores from '../../api/busquedaDeActores'
 import DetalleMovie from '../VerDetallePelicula/DetalleMovie';
+import buscarUnElemento from '../../api/buscarUnElemento'
 const urlBase = 'https://image.tmdb.org/t/p/w300'
 
 function ListaPeliculasBusqueda(props) {
@@ -56,6 +57,17 @@ const Card = (props) => {
                 
             })
             .then(res => {                                
+                buscarUnElemento(props.id)
+                .then(respuesta => {                                      
+                    if(respuesta.data.length == 0){
+                        setYaSoyFav(false)                        
+                        {console.log("No estoy")}
+                    }
+                    else{
+                        setYaSoyFav(true)
+                        {console.log("Estoy")}
+                    }
+                })
                 setShow(true)                
             })
         })  

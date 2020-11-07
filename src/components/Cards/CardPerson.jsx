@@ -19,14 +19,16 @@ const CardPerson = ({imagen,id}) => {
         })
         .then(res => {                                
             buscarUnElemento(id)
-            .then(res => {
-                if(res === []){
-                    setYaSoyFav(false)
-                }
-                else{
-                    setYaSoyFav(true)
-                }
-            })
+                .then(respuesta => {                                      
+                    if(respuesta.data.length == 0){
+                        setYaSoyFav(false)                        
+                        {console.log("No estoy")}
+                    }
+                    else{
+                        setYaSoyFav(true)
+                        {console.log("Estoy")}
+                    }
+                })
             setShow(true)
         })
 
